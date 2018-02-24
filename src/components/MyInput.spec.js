@@ -25,7 +25,16 @@ describe('<MyInput />', () => {
 
   it('input has onChange function', () => {
     const wrapper = shallow(<MyInput />);
-    expect(wrapper.props().hasOwnProperty("onChange")).toBe(true);
+    const event = {target: {value: "temp"}};
+    wrapper.simulate('change', event);
+    expect(wrapper.state().value).toBe("temp");
+  });
+
+  it('input has onChange function, function updates value on input', () => {
+    const wrapper = shallow(<MyInput />);
+    const event = {target: {value: "temp"}};
+    wrapper.simulate('change', event);
+    expect(wrapper.props().value).toBe("temp");
   });
 
 });
