@@ -42,4 +42,13 @@ describe('<MyInput />', () => {
     expect(wrapper.name()).toBe("div");
   });
 
+  it('button exists', () => {
+    const wrapper = shallow(<MyInput />);
+    expect(wrapper.children('button').exists()).toBe(true);
+  });
+
+  it('button has onClick function', () => {
+    const wrapper = shallow(<MyInput />);
+    expect(wrapper.children('button').props().hasOwnProperty('onClick')).toBe(true);
+  });
 });
