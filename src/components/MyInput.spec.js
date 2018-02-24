@@ -5,7 +5,7 @@ import { shallow } from 'enzyme';
 describe('<MyInput />', () => {
   it('Component it rendering with the correct primitive', () => {
     const wrapper = shallow(<MyInput />);
-    expect(wrapper.name()).toBe("input");
+    expect(wrapper.children('input').name()).toBe("input");
   });
 
   it('Component has a state with a key of value', () => {
@@ -15,26 +15,31 @@ describe('<MyInput />', () => {
 
   it('input contains the value = ""', () => {
     const wrapper = shallow(<MyInput />);
-    expect(wrapper.props().value).toBe("");
+    expect(wrapper.children('input').props().value).toBe("");
   });
 
   it('input contains the value = ""', () => {
     const wrapper = shallow(<MyInput />);
-    expect(wrapper.props().value).toBe("");
+    expect(wrapper.children('input').props().value).toBe("");
   });
 
   it('input has onChange function', () => {
     const wrapper = shallow(<MyInput />);
     const event = {target: {value: "temp"}};
-    wrapper.simulate('change', event);
+    wrapper.children('input').simulate('change', event);
     expect(wrapper.state().value).toBe("temp");
   });
 
   it('input has onChange function, function updates value on input', () => {
     const wrapper = shallow(<MyInput />);
     const event = {target: {value: "temp"}};
-    wrapper.simulate('change', event);
-    expect(wrapper.props().value).toBe("temp");
+    wrapper.children('input').simulate('change', event);
+    expect(wrapper.children('input').props().value).toBe("temp");
+  });
+
+  it('input is wrapped in a div', () => {
+    const wrapper = shallow(<MyInput />);
+    expect(wrapper.name()).toBe("div");
   });
 
 });

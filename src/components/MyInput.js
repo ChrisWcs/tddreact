@@ -17,7 +17,11 @@ class MyInput extends Component {
     }
 
     render(){
-        return (<input value={this.state.value} onChange={this.handleChange}/>);
+        return (
+            <div>
+                <input value={this.state.value} onChange={this.handleChange}/>
+            </div>
+        );
     }
 }
 
