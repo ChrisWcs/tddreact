@@ -10,7 +10,7 @@ class MyInput extends Component {
     }
 
     render(){
-        return (<input/>);
+        return (<input value="" onChange={() => {}}/>);
     }
 }
 
